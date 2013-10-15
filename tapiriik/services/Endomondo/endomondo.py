@@ -242,6 +242,7 @@ class EndomondoService(ServiceBase):
                     try:
                         self._populateActivityFromTrackData(activity, cachedTrackData, minimumWaypoints=True)
                     except APIExcludeActivity as e:
+                        e.ExternalActivityID = track_id
                         logger.info("Encountered APIExcludeActivity %s" % str(e))
                         exclusions.append(e)
                         continue
